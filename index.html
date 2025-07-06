@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheeraj's Portfolio</title>
+  
+  <style>
+
+    html {
+  scroll-behavior: smooth;
+}
+
+    :root {
+      --primary-color: #8B0000; /* Deep Red */
+      --secondary-color: #FFE5B4; /* Cream */
+      --background-color: #fff9f4;
+      --text-color: #222;
+      --button-color: #8B0000;
+      --button-text: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-image: url(https://static.vecteezy.com/system/resources/thumbnails/040/164/864/small_2x/abstract-gradient-animation-background-free-video.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-left {
+      flex: 1 1 50%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-left img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      border: 6px solid var(--primary-color);
+      object-fit: cover;
+    }
+
+    .hero-right {
+      flex: 1 1 40%;
+      text-align: left;
+    }
+
+    .typing-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      min-height: 3rem;
+      white-space: nowrap;
+      border-right: 2px solid white;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      margin: 1rem 0;
+    }
+
+    .description {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--button-color);
+      color: var(--button-text);
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #6a0000;
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+   #education {
+      background-image: url('https://images.unsplash.com/photo-1584697964154-220dc7a43389?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #222;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .education-boxes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .edu-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edu-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .edu-box strong {
+      font-size: 1.3rem;
+    }
+
+    #skills { background-color: #fff1e6; }
+    #projects { background-color: #fdf0f0; }
+    #certificates { background-color: #f9ecec; }
+    #contact { background-color: #fffaf0; }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .skills-buttons button {
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skills-buttons button:hover {
+      background-color: #6a0000;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .project-media {
+      flex: 1 1 45%;
+      max-width: 400px;
+    }
+
+    .project-media img, .project-media video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .project-description {
+      flex: 1 1 45%;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .project-description h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      text-underline-position: below;
+    }
+
+    .project-description p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+
+    @media screen and (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-right {
+        text-align: center;
+      }
+    }
+    
+      #certificates {
+      background-color: #f9ecec;
+      padding: 2rem;
+    }
+
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .certificate-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 400px;
+    }
+
+    .certificate-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .certificate-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .certificate-card p {
+      background-color: #fef7f1;
+      padding: 0.8rem;
+      font-size: 1rem;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .highlight-track {
+      margin: 4rem auto;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .track-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      border: 4px dashed #8B0000;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .track-caption {
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      color: #444;
+      font-style: italic;
+    }
+
+    @media screen and (max-width: 900px) {
+      .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+.activity-card {
+      width: 75%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 1rem;
+    }
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(218, 165, 32, 0.6);
+    }
+    .activity-images {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .activity-images img {
+      flex: 1 1 calc(33% - 2rem);
+      max-width: 200px;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      margin: 0.5rem;
+    }
+    .activity-content {
+      background-color: #fff1e6;
+      padding: 1rem;
+      font-size: 1.05rem;
+      color: #222;
+    }
+    .activity-date {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background-color: gold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #333;
+    }
+      
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const phrases = ["Dheeraj Buchha", "Web Developer"];
+      const typingText = document.getElementById("typing-text");
+      let i = 0, j = 0, isDeleting = false;
+
+      function type() {
+        const current = phrases[i];
+        typingText.textContent = current.substring(0, j) + "|";
+
+        if (!isDeleting && j < current.length) {
+          j++;
+          setTimeout(type, 130);
+        } else if (isDeleting && j > 0) {
+          j--;
+          setTimeout(type, 60);
+        } else {
+          isDeleting = !isDeleting;
+          if (!isDeleting) i = (i + 1) % phrases.length;
+          setTimeout(type, 900);
+        }
+      }
+
+      type();
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience & Responsibility</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#co-curricular">Co-Curricular</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-left">
+      <img src="per-photo.jpg" alt="Dheeraj's Photo" />
+    </div>
+    <div class="hero-right">
+      <div class="typing-text" id="typing-text"></div>
+      <p class="tagline"><br>Designing ideas into code.</p>
+      <p class="description">A passionate web developer dedicated to building responsive, user-friendly, and impactful full-stack applications.</p>
+      <br>
+      <br>
+      <a href="my-resume.pdf" class="btn" download>Download Resume</a>
+      <p></p>
+    </div>
+  </header>
+
+  <section id="education">
+    <h2>My EDUCATION</h2>
+    <br>
+    <br>
+    <div class="education-boxes">
+      <div class="edu-box">
+        <strong>Class 10</strong><br>
+        Percentage: <b>91%</b><br>
+        Shri Jain Public School, Bikaner (CBSE)<br>
+        A Perfect 100 in Mathematics
+      </div>
+      
+      <div class="edu-box">
+        <strong>B.Tech in Computer Science (IoT)</strong><br>
+        CGPA: <b>8.9</b> (Ongoing)<br>
+        SRM Institute of Science and Technology, KTR
+      </div>
+
+      <div class="edu-box">
+        <strong>Class 12</strong><br>
+        Percentage: <b>80%</b><br>
+        Shiksha High School,<br> Bikaner (CBSE)
+      </div>
+    </div>
+  </section>
+<br>
+<br>
+<br>
+
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <br>
+    <br>
+    <div class="skills-buttons">
+      <button>🔧 C</button>
+      <button>💻 C++</button>
+      <button>🌐 HTML</button>
+      <button>🎨 CSS</button>
+      <button>🟨 JavaScript</button>
+      <button>🧰 Bootstrap</button>
+      <button>⚛️ React</button>
+      <button>💾 Database Management System</button>
+      <button>🖥️ Operating Systems</button>
+      <button>⚙️ OOPS Concept</button>
+      <button>  Data Structures and Algorithms</button>
+    </div>
+    <br>
+    <br>
+  </section>
+
+
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <br>
+    <br>
+    <div class="project-container">
+      <div class="project-media">
+        <video controls>
+          <source src="simon-game.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="project-description">
+        <h3><b>"Simon Game" 🔴🟢🟡🔵 </b></h3>
+        <p><strong>A fun and interactive memory game built using HTML, CSS, and JavaScript. It challenges players to remember sequences and tests their short-term memory.Press any key to start the game.</strong> 
+          <ul>
+<li>➤ Watch the color that flashes and remember the sequence.</li>
+<li>➤ Click the buttons in the same order.</li>
+<li>➤ Each level adds a new color to the sequence.</li>
+<li>➤ Make one mistake and... Game Over!</li>
+</ul></p>
+         <a class="btn" href="https://lnkd.in/gf7Qbj2x" target="_blank">Play game</a>
+         <a class="btn" href="https://github.com/Dheeraj-999/Simon-says-game" target="_blank">Visit Repository</a>
+      </div>
+    </div>
+
+    <div class="project-container">
+      <div class="project-description">
+        <h3><b>"API Analyzer and Chatbot"</b></h3>
+        <p><strong>	This will take your api and then analyze wether it is secured and working or not.</strong></p>
+        <ul>
+          <li>➤ Network Security Analyzer.</li>
+          <li>➤ API Analyzer for Developers.</li>
+          <li>➤ Detailed Report Generation.</li>
+        </ul>
+        <a class="btn" href="https://secure-api-virid.vercel.app/" target="_blank">Analyze API</a>
+      </div>
+      <div class="project-media">
+        <!-- <img src="api-chatbot-thumbnail.jpg" alt="API Chatbot Screenshot"> -->
+        <video controls>
+          <source src="API security.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    
+      <div class="project-container">
+      <div class="project-media">
+        <img src="anti-sleep.png" alt="antisleep">
+      </div>
+      <div class="project-description">
+        <h3><b>"Anti Sleep Alarm" 🚨</b></h3>
+        <p><strong>Accidents, Saving Lives.</strong>(1st Year Project) </p>
+        <ul>
+          <li>➤Built using Arduino Nano, relay module, DC motor, and motion sensors to detect head movement or inactivity.</li>
+          <li>➤On detecting drowsiness, the system activates a vibration motor to wake the driver and automatically stops the vehicle by cutting motor power using the relay module.</li>
+        </ul>
+        <a class="btn" href="https://github.com/Dheeraj-999/portfolio" target="_blank">Visit Repository</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="background-color:#fffaf0; padding: 3rem 2rem;">
+  <h2>Experience & Responsibilities</h2>
+  <br>
+  <br>
+
+  <!-- Internship Card with Image and Content -->
+  <div class="internship-box" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; background-color: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 1200px; margin: 0 auto; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+    <div style="flex: 1 1 50%; padding: 1rem;">
+      <h3 style="color: #8B0000; font-size: 1.8rem; margin-bottom: 2rem;">Intern at Prodigy InfoTech</h3>
+      <p style="font-size: 1.1rem; color: #333;"><strong>July 2025 – Present</strong> <br><br>interning at <b>Prodigy InfoTech</b> as a Web Development Intern, where I’m gaining hands-on experience building real-world applications. This role involves working on responsive front-end interfaces using HTML, CSS, JavaScript, and modern frameworks while also understanding backend integration essentials. I'm actively involved in writing clean, maintainable code, debugging issues, and collaborating with the team on mini-projects that simulate client-based scenarios. The internship has provided a great platform to apply my theoretical knowledge in a practical setting, strengthen my problem-solving skills, and understand the development lifecycle in a professional environment. Being a part of this journey has also helped improve my version control practices using Git and encouraged me to stay updated with current web development trends and best practices.
+
+</p>
+    </div>
+    <div style="flex: 1 1 40%; padding: 1rem; display: flex; justify-content: center;">
+      <img class="track-image" src="offer-letter.jpg" alt="Internship Offer Letter" style="width: 100%; max-width: 320px; height: auto; border-radius: 12px; border: 2px dashed #8B0000;">
+    </div>
+  </div>
+
+  <style>
+    .internship-box:hover,
+    .timeline-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+  </style>
+
+  <!-- Timeline with Curved Dashed SVG -->
+  <div class="timeline-card" style="background-color: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 1200px; margin: 4rem auto; padding: 2rem; transition: transform 0.3s ease; height: 400px;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h3 style="color: #8B0000; font-size: 1.8rem; margin-bottom: 2rem;">Positions</h3>
+    </div>
+    <div style="position: relative; width: 100%; height: 240px;">
+      <svg width="100%" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50 150 Q 400 20 750 150" stroke="#8B0000" stroke-width="3" fill="transparent" stroke-dasharray="10,10" />
+        <!-- Left Dot -->
+        <circle cx="50" cy="150" r="10" fill="#8B0000" stroke="white" stroke-width="4" />
+        <!-- Right Dot -->
+        <circle cx="750" cy="150" r="10" fill="#8B0000" stroke="white" stroke-width="4" />
+      </svg>
+      <div style="position: absolute; top: 170px; left: 0; width: 280px; padding-left: 10px;">
+        <h4 style="margin: 0; color: #8B0000; font-size: 1.2rem;">PR Member</h4>
+        <p style="margin: 0; font-size: 0.95rem; color: #444; line-height: 1.4;"><strong>IEEE SSIT SRMIST, 2024</strong><br><small>Coordinated major events like Ideathons, Hackathons, Workshops, welcoming more than 200 teams.</small></p>
+      </div>
+      <div style="position: absolute; top: 170px; right: 0; width: 280px; padding-right: 10px; text-align: right;">
+        <h4 style="margin: 0; color: #8B0000; font-size: 1.2rem;">Editorial Head</h4>
+        <p style="margin: 0; font-size: 0.95rem; color: #444; line-height: 1.4;"><strong>IEEE SSIT SRMIST, 2025</strong><br><small>Led content curation, editorial strategy, and documentation across various events.<br>&<br>Organized and lead the recruitment drive.</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <br>
+    <br>
+    <div class="certificates-grid">
+      <div class="certificate-card">
+        <img src="certi1.jpg" alt="Innospark Certificate">
+        <p><b>INNOSPARK Ideathon Finalist</b><br>Mumbai,2025</p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi2.jpg" alt="Certificate">
+        <p>Successfully completed <b>NPTEL certification</b> in <b>Database Management Systems.</b></p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi3.jpg" alt="Certificate">
+        <p>Presented a Blockchain-IoT project at SRMIST <b>National Seminar</b> on tech innovation and cybersecurity.</p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi4.jpg" alt="Certificate">
+        <p>Handled coordination and logistics for <b>SDR Workshop Series,<br> IEEE SSIT SRMIST</b></p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi5.jpg" alt="Certificate">
+        <p>Achieved <b>Top 30</b> rank among 150+ teams in Coding Ninjas <br><b>36-hour Hackathon</b></p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi6.jpg" alt="Certificate">
+        <p><b>Finalist</b> in IDEATHON 2.0 Organized by NextGen AI </p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi7.jpg" alt="Certificate">
+        <p><b>Proficient in C++</b> fundamentals to advanced concepts</p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi8.jpg" alt="Certificate">
+        <p>Actively Participated in Ultron 8.0 <b>24-hrs Hackathon</b></p>
+      </div>
+      <div class="certificate-card">
+        <img src="certi9.jpg" alt="Certificate">
+        <p>Acheived <b>1st Place</b> in Civil Mechanical Workshop<br>(1st Semester)</p>
+      </div>
+    </div>
+    <div class="modal" id="image-modal">
+      <img id="modal-image" src="" alt="Zoomed Certificate">
+    </div>
+  </section>
+
+
+
+  <section id="co-curricular" style="padding: 3rem 2rem; background-color: #fff9f4;">
+  <h2 style="text-align: center; color: #8B0000; margin-bottom: 2rem;">Co-Curricular Activities</h2>
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: center;">
+     <div class="activity-card">
+      <span class="activity-date">2024-25</span>
+      <div class="activity-images">
+        <img src="club-1.jpg" alt="Activity 2-1">
+        <img src="club-2.jpg" alt="Activity 2-2">
+        <img src="clubb-3.JPG" alt="Activity 2-3">
+      </div>
+      <div class="activity-content"><strong>Innovation & Leadership – My IEEE Journey at SRMIST<br><br></strong>Active member and domain lead in IEEE SSIT SBC Chapter. Contributed to multiple high-impact events including <b>Hackathons, Ideathons, Workshops, and Recruitment Drives</b>. From managing help desks to conducting interviews, I’ve gained hands-on experience in leadership, coordination, and technical exposure. These collaborative experiences have shaped my confidence, communication, and organizational skills immensely.</div>
+    </div>
+
+
+    <div class="activity-card">
+      <span class="activity-date">Jan 2025</span>
+      <div class="activity-images">
+        <img src="cocur1-1.jpg" alt="Activity 1-1">
+        <img src="cocur1-2.jpg" alt="Activity 1-2">
+        <img src="cocur1-3.jpg" alt="Activity 1-3">
+      </div>
+      <div class="activity-content"><strong>Blockchain x IoT – National Seminar Experience</strong><br><br>Presented a team project titled "Network Security & Resource Allocation using Blockchain–IoT" during a <b>two-day national seminar</b> at SRMIST. We developed a <b>smart chatbot to detect cyber threats in real-time</b>. Collaborated with peers, explored practical blockchain applications, and gained valuable insights from experts on cybersecurity and tech ecosystems. A truly enriching and hands-on experience!</div>
+    </div>
+    
+
+    <div class="activity-card">
+      <span class="activity-date">April 2024</span>
+      <div class="activity-images">
+        <img src="act3-2.jpg" alt="Activity 3-1">
+        <img src="act3-3.jpg" alt="Activity 3-1">
+        <!-- <img src="activity3-1.jpg" alt="Activity 3-1"> -->
+      </div>
+      <div class="activity-content"><strong>A life-saving idea born from hardware and logic:</strong>   "Anti Sleep Alarm"<br><br>This project, developed during my 1st semester as part of a semiconductor project, was aimed at addressing <b>real-world road safety concerns</b>. The system used an Arduino Nano, motion sensors, relay module, and a DC vibration motor to detect drowsiness through head movements. On detecting inactivity, it would instantly activate the buzzer/vibration and cut off motor power — potentially preventing a fatal accident.</div>
+    </div>
+  </div>
+  </section>
+
+
+   <section id="contact" style="background-color: #fffaf0; padding: 3rem 2rem; text-align: center;">
+  <h2>Contact Me</h2>
+  <br>
+  <br>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 900px; margin: auto;">
+    <a href="mailto:dheerajbuchha2000@gmail.com" target="_blank" style="text-decoration: none;">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/8B0000/new-post.png" alt="Email">
+        <p>Email</p>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/dheeraj-buchha/" target="_blank" style="text-decoration: none;">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/8B0000/linkedin.png" alt="LinkedIn">
+        <p>LinkedIn</p>
+      </div>
+    </a>
+    <a href="https://github.com/Dheeraj-999" target="_blank" style="text-decoration: none;">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/8B0000/github.png" alt="GitHub">
+        <p>GitHub</p>
+      </div>
+    </a>
+    <a href="https://instagram.com/dheeraj_jain_999" target="_blank" style="text-decoration: none;">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/8B0000/instagram-new.png" alt="Instagram">
+        <p>Instagram</p>
+      </div>
+    </a>
+    <a href="https://maps.google.com/?q=India" target="_blank" style="text-decoration: none;">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/8B0000/marker.png" alt="Location">
+        <p>India</p>
+      </div>
+    </a>
+  </div>
+
+  <style>
+    .contact-card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 180px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .contact-card img {
+      width: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card p {
+      margin: 0;
+      color: #8B0000;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  </style>
+</section>
+
+
+
+</body>
+</html>
