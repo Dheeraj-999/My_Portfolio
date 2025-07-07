@@ -1,0 +1,1 @@
+// Javascript is included in html file itself
