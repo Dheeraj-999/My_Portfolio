@@ -564,6 +564,93 @@ nav {
   overflow-wrap: break-word;
 }
 
+    /* Make positions section responsive */
+.positions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.positions-title {
+  text-align: center;
+  color: #8B0000;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.positions-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Arc line or SVG should scale */
+.arc-line {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.position-card {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.position-card h3 {
+  color: #8B0000;
+  font-weight: bold;
+}
+
+.position-card h4 {
+  margin: 0.3rem 0;
+}
+
+.position-card p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Responsive fix */
+@media (min-width: 768px) {
+  .positions-content {
+    flex-direction: row;
+  }
+  
+  .position-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .positions-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .arc-line {
+    display: none; /* Hide curve on mobile if layout breaks */
+  }
+}
+
+
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
